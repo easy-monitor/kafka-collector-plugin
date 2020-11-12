@@ -38,7 +38,7 @@ jobs:
       - name: archive
         run: |
           cd ..
-          tar -zcvf kafka-collector-plugin.tar.gz kafka-collector-plugin
+          tar --exclude='./kafka-collector-plugin/.git' --exclude='./kafka-collector-plugin/.github' --exclude='./kafka-collector-plugin/.gitmodules' -zcvf kafka-collector-plugin.tar.gz kafka-collector-plugin
           ls
 
       - name: Create Release
