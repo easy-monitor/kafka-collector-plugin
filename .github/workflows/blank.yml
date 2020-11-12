@@ -20,16 +20,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: Checkout submodules
-        shell: bash
-        run: |
-          # From https://github.com/actions/checkout/issues/116#issuecomment-583221947
-          git config --global url."https://github.com/".insteadOf "git@github.com:"
-          git submodule sync --recursive
-          git -c "http.extraheader=Authorization: basic ${{secrets.GITHUB_ACCESS_TOKEN}}" -c protocol.version=2 submodule update --init --force --recursive --depth=1
-
+      # - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          submodules: true
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
