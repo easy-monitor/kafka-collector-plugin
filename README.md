@@ -26,13 +26,17 @@ $ sh plugin_op.sh install 8888 /data/exporter/kafka-collector-plugin
 4. 导入成功后访问 EasyOps 平台的「采集插件」列表页面 ( http://your-easyops-server/next/collector-plugin )，就能看到导入的 "kafka_collector_plugin" 采集插件。
 
 ### 启动插件包
+
+1. 根据现场的情况修改`supervisor/exporter-supervisor.py`的`ORG`和`CMDB_HOST`配置
+
+2. 启动插件包
 有两种方案：
 
-1. 手动执行：
-```shell
-cd script
-sh deploy/start_script.sh
-```
+    a. 手动执行：
+    ```shell
+    cd script
+    sh deploy/start_script.sh
+    ```
 
-2. 通过优维的部署平台执行：
-在上述导入那个步，其实就已经将插件包上传到平台的制品包，你可以在程序包管理看到该制品包，程序包的包名为：`collector_plugin-xxx`，按标准的主机部署的方式执行即可，这边不再详细描述。
+    b. 通过优维的部署平台执行：
+    在上述导入那个步，其实就已经将插件包上传到平台的制品包，你可以在程序包管理看到该制品包，程序包的包名为：`collector_plugin-xxx`，按标准的主机部署的方式执行即可，这边不再详细描述。
